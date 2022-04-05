@@ -11,13 +11,14 @@ jobs:
       name: PHPCS
       runs-on: ubuntu-latest
       steps:
-        - uses: shivammathur/setup-php
-          with:
-            php-version: '8.0'
-          uses: chekalsky/phpcs-action@v2
+        - uses: actions/checkout@v2
+        - name: Setup PHP
+            uses: shivammathur/setup-php@v2
+            with:
+              php-version: '8.0'
         - name: Install dependencies
           run: composer install --dev --prefer-dist --no-progress --no-suggest
         - name: PHPCS check
           uses: chekalsky/phpcs-action@v1
           with:
-            installed_paths: '${{ github.workspace }}/vendor/phpcompatibility/php-compatibility'
+            phpcs_bin_path: './vendor/bin/phpcs'
