@@ -18,4 +18,4 @@ jobs:
         - name: Install dependencies
           run: composer install --dev --prefer-dist --no-progress --no-suggest
         - name: PHP-8 compatible PHPCS
-          run: vendor/bin/phpcs
+          run: vendor/bin/phpcs --standard=phpcs.xml
